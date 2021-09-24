@@ -20,28 +20,3 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: https://dev-jecc6018.us.auth0.com/
-
-auth0:
-  audience: http://sma-control/api
-
-
-
-#
-#  security:
-#    oauth2:
-#      client:
-#        registration:
-#          auth0:
-#            client-id: dFpvB2TZww9kAk9OGWRXryqkNPHX6OAK
-#            client-secret: RXHcVZ1awkjv_nrwTdgrpQUBA1d4GR4OJqIf-5SC893M7k3LDKD1weh4ENfEnYzU
-#            scope:
-#              - openid
-#              - profile
-#              - email
-#        provider:
-#          auth0:
-#            # trailing slash is important!
-#            issuer-uri: https://YOUR_DOMAIN/
-#auth0.audience=
-#auth0.domain=
-#spring.security.oauth2.resourceserver.jwt.issuer-uri=https://${auth0.domain}/

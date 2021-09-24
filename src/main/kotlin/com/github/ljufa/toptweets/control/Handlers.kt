@@ -9,8 +9,7 @@ import org.springframework.web.reactive.function.server.ServerResponse.ok
 @Component
 class TopTweetsHandler(private val hashTagRepository: HashTagRepository) {
 
-    suspend fun allHashTags(request: ServerRequest): ServerResponse {
-
+    suspend fun handle(request: ServerRequest): ServerResponse {
         return ok().bodyAndAwait(hashTagRepository.findAll().asFlow())
     }
 

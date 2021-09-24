@@ -10,9 +10,9 @@ class RoutesConfig(val handler: TopTweetsHandler,
 
     @Bean
     fun routes() = coRouter {
-        POST("/_login", userHandler::handle)
-        "user-api".nest {
-            GET("hashtags", handler::allHashTags)
+        "api".nest {
+            POST("users", userHandler::handle)
+            GET("hashtags", handler::handle)
         }
     }
 
