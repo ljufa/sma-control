@@ -11,6 +11,7 @@ class RoutesConfig(val handler: TopTweetsHandler,
     @Bean
     fun routes() = coRouter {
         "api".nest {
+            GET("register", userHandler::registerUser)
             POST("users", userHandler::handle)
             GET("hashtags", handler::handle)
         }
