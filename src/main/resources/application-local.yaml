@@ -1,0 +1,9 @@
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/toptweets
+  flyway:
+    url: jdbc:postgresql://localhost:5432/toptweets
+server:
+  port: 9090
+debug: true

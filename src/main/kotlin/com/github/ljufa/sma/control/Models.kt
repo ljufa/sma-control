@@ -1,4 +1,4 @@
-package com.github.ljufa.toptweets.control
+package com.github.ljufa.sma.control
 
 import org.springframework.data.relational.core.mapping.Table
 

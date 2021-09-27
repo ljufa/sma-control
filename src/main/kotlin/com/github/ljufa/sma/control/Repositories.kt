@@ -1,4 +1,4 @@
-package com.github.ljufa.toptweets.control
+package com.github.ljufa.sma.control
 
 import org.flywaydb.core.Flyway
 import org.springframework.context.annotation.Bean

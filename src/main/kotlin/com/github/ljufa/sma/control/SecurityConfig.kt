@@ -1,4 +1,4 @@
-package com.github.ljufa.toptweets.control
+package com.github.ljufa.sma.control
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean

@@ -1,4 +1,4 @@
-package com.github.ljufa.toptweets.control
+package com.github.ljufa.sma.control
 
 import kotlinx.coroutines.reactive.asFlow
 import org.springframework.http.HttpStatus
