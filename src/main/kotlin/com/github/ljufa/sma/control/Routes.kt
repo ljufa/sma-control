@@ -5,15 +5,14 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.server.*
 
 @Configuration
-class RoutesConfig(val handler: TopTweetsHandler,
-                   val userHandler: UserLoginHandler
+class RoutesConfig(val handler: HashTagHandler,
+                   val userHandler: UserHandler
 ) {
 
     @Bean
     fun routes() = coRouter {
         "api".nest {
             GET("register", userHandler::registerUser)
-            POST("users", userHandler::handle)
             GET("hashtags", handler::handle)
         }
     }

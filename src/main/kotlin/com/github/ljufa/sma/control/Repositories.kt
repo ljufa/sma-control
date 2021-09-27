@@ -1,12 +1,11 @@
 package com.github.ljufa.sma.control
 
+import kotlinx.coroutines.flow.Flow
 import org.flywaydb.core.Flyway
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.env.Environment
-import org.springframework.data.repository.reactive.ReactiveCrudRepository
-import reactor.core.publisher.Flux
-import reactor.core.publisher.Mono
+import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
 
 @Configuration
@@ -25,7 +24,7 @@ class FlywayConfig(private val env: Environment) {
     }
 }
 
-interface HashTagRepository : ReactiveCrudRepository<HashTag, String>
-interface UserRepository : ReactiveCrudRepository<User, String>{
-    suspend fun findByUsernameAndPasswordAndActiveIsTrue(username: String, password: String): User?
+interface HashTagRepository : CoroutineCrudRepository<HashTag, String>
+interface UserRepository : CoroutineCrudRepository<User, String> {
+    fun findByAuthId(authId: String): Flow<User>
 }

@@ -1,6 +1,8 @@
 package com.github.ljufa.sma.control
 
+import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
+import java.time.Instant
 
 /**
  * DB classes
@@ -8,10 +10,13 @@ import org.springframework.data.relational.core.mapping.Table
 @Table("twitter.user_hashtag")
 data class HashTag(val tag: String)
 data class TwUser(val id: String)
-data class User(val id: String, val username: String, val password: String, val active: Boolean)
 
+@Table("sma.user")
 
-/**
- * DTO classes
- */
-data class Login(val username: String, val password: String)
+data class User(
+    @Id
+    val id: Long? = null,
+    val authId: String,
+    val createdDate: Instant? = null
+)
+
