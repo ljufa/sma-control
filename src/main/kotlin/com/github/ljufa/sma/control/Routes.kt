@@ -12,7 +12,7 @@ class RoutesConfig(val handler: HashTagHandler,
     @Bean
     fun routes() = coRouter {
         "api".nest {
-            GET("register", userHandler::registerUser)
+            POST("register", userHandler::registerUser)
             GET("hashtags", handler::handle)
         }
     }

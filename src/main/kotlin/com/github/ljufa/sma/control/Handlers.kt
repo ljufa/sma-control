@@ -16,7 +16,7 @@ class HashTagHandler(private val hashTagRepository: HashTagRepository) {
 }
 
 @Component
-class UserHandler(private val userRepository: UserRepository) {
+class UserHandler(private val userRepository: UserRepository, private val hashTagRepository: HashTagRepository) {
 
     suspend fun registerUser(request: ServerRequest): ServerResponse {
         val principal = request.awaitPrincipal() ?: return ServerResponse.status(403).buildAndAwait()
@@ -26,6 +26,28 @@ class UserHandler(private val userRepository: UserRepository) {
             userRepository.save(User(authId = principal.name))
             accepted().buildAndAwait()
         }
+    }
+
+    suspend fun getUserPreferences(request: ServerRequest): ServerResponse {
+        return ok().bodyValueAndAwait(
+            UserPreferences(
+                twitterPrefs = TwitterPrefs(
+                    emptyList(),
+                    emptyList(),
+                    emptyList(),
+                    emptyList()
+                )
+            )
+        )
+//        return doInUserContext(request){
+//        }
+    }
+
+    suspend fun doInUserContext(request: ServerRequest, handle: (User) -> ServerResponse): ServerResponse {
+        val principal = request.awaitPrincipal() ?: return ServerResponse.status(403).buildAndAwait()
+        val user = userRepository.findByAuthId(principal.name).firstOrNull() ?: return ServerResponse.notFound()
+            .buildAndAwait()
+        return handle(user)
     }
 
 }
